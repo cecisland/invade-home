@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>INVADE_HOME</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Invade_Home">
+<meta name="theme-color" content="#0a0e12">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAACdklEQVR4nO3dsW0CQRBAUWMREWCJVmjOJbg5F+MKcODc9gmWXT7vxQSj09ckc+J2h+Pp8gIRr7MHgFsSNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpOxnD3BL56+Pf//28+194CRzPfNzsKFJETQpgiZF0KQImhRBkyJoUgRNiqBJETQpu8PxdJk9xAyPdh5+tHlnsaFJETQpgiZF0KQImhRBkyJoUgRNiqBJETQpqdP3lvMwP2pnchuaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTsvTpe+Qpe8vJd4WT+irzrn4qt6FJETQpgiZF0KQImhRBkyJoUgRNiqBJETQpgibl7u9yrPBeBPcx470PG5oUQZMiaFIETYqgSRE0KYImRdCkCJoUQZOynz3Ab7aeTp3Vt6s9YxuaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTsvTpe6TV/4n+Gqufp0eyoUkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNClLf7x+pFHn4RU+Ml8+6//FhiZF0KQImhRBkyJoUgRNiqBJETQpgiZF0KQ87embJhuaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEn5BiSgM4enKPhiAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAACdklEQVR4nO3dsW0CQRBAUWMREWCJVmjOJbg5F+MKcODc9gmWXT7vxQSj09ckc+J2h+Pp8gIRr7MHgFsSNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpOxnD3BL56+Pf//28+194CRzPfNzsKFJETQpgiZF0KQImhRBkyJoUgRNiqBJETQpu8PxdJk9xAyPdh5+tHlnsaFJETQpgiZF0KQImhRBkyJoUgRNiqBJETQpqdP3lvMwP2pnchuaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTsvTpe+Qpe8vJd4WT+irzrn4qt6FJETQpgiZF0KQImhRBkyJoUgRNiqBJETQpgibl7u9yrPBeBPcx470PG5oUQZMiaFIETYqgSRE0KYImRdCkCJoUQZOynz3Ab7aeTp3Vt6s9YxuaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTsvTpe6TV/4n+Gqufp0eyoUkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNClLf7x+pFHn4RU+Ml8+6//FhiZF0KQImhRBkyJoUgRNiqBJETQpgiZF0KQ87embJhuaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEn5BiSgM4enKPhiAAAAAElFTkSuQmCC">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkludmFkZV9Ib21lIiwgInNob3J0X25hbWUiOiAiSW52YWRlX0hvbWUiLCAic3RhcnRfdXJsIjogIi4vIiwgInNjb3BlIjogIi4vIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwYTBlMTIiLCAidGhlbWVfY29sb3IiOiAiIzBhMGUxMiIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUxRQUFBQzBDQVlBQUFBOXpRWXlBQUFDZGtsRVFWUjRuTzNkc1cwQ1FSQkFVV01SRVdDSlZtak9KYmc1RitNS2NPRGM5Z21XWFQ3dnhRU2owOWNrYytKMmgrUHA4Z0lScjdNSGdGc1NOQ21DSmtYUXBBaWFGRUdUSW1oU0JFMktvRWtSTkNtQ0prWFFwQWlhRkVHVEltaFNCRTJLb0VrUk5DbUNKa1hRcEFpYUZFR1RJbWhTQkUyS29Fa1JOQ21DSmtYUXBBaWFGRUdUSW1oU0JFMktvRWtSTkNtQ0prWFFwQWlhRkVHVEltaFNCRTJLb0VrUk5DbUNKa1hRcE94bkQzQkw1NitQZi8vMjgrMTk0Q1J6UGZOenNLRkpFVFFwZ2laRjBLUUltaFJCa3lKb1VnUk5pcUJKRVRRcHU4UHhkSms5eEF5UGRoNSt0SGxuc2FGSkVUUXBnaVpGMEtRSW1oUkJreUpvVWdSTmlxQkpFVFFwcWRQM2x2TXdQMnBuY2h1YUZFR1RJbWhTQkUyS29Fa1JOQ21DSmtYUXBBaWFGRUdUc3ZUcGUrUXBlOHZKZDRXVCtpcnpybjRxdDZGSkVUUXBnaVpGMEtRSW1oUkJreUpvVWdSTmlxQkpFVFFwZ2libDd1OXlyUEJlQlBjeDQ3MFBHNW9VUVpNaWFGSUVUWXFnU1JFMEtZSW1SZENrQ0pvVVFaT3luejNBYjdhZVRwM1Z0NnM5WXh1YUZFR1RJbWhTQkUyS29Fa1JOQ21DSmtYUXBBaWFGRUdUc3ZUcGU2VFYvNG4rR3F1ZnAwZXlvVWtSTkNtQ0prWFFwQWlhRkVHVEltaFNCRTJLb0VrUk5DbExmN3grcEZIbjRSVStNbDgrNi8vRmhpWkYwS1FJbWhSQmt5Sm9VZ1JOaXFCSkVUUXBnaVpGMEtRODdlbWJKaHVhRkVHVEltaFNCRTJLb0VrUk5DbUNKa1hRcEFpYUZFR1RJbWhTQkUyS29Fa1JOQ21DSmtYUXBBaWFGRUdUSW1oU0JFMktvRWtSTkNtQ0prWFFwQWlhRkVHVEltaFNCRTJLb0VrUk5DbUNKa1hRcEFpYUZFR1RJbWhTQkUyS29Fa1JOQ21DSmtYUXBBaWFGRUdUSW1oU0JFMktvRW41QmlTZ000ZW5LUGhpQUFBQUFFbEZUa1N1UW1DQyIsICJzaXplcyI6ICIxODB4MTgwIiwgInR5cGUiOiAiaW1hZ2UvcG5nIn1dfQ==">
+<style>
+  :root{
+    --bg:#0a0e12;
+    --bg2:#10161d;
+    --panel:#141b23;
+    --green:#3dff9a;
+    --green-dim:#1f6b45;
+    --pink:#ff3f8e;
+    --amber:#ffc23c;
+    --ink:#dfe9e6;
+    --ink-dim:#7c8f8a;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;height:100%; touch-action:pan-x pan-y; -webkit-text-size-adjust:100%;}
+  body{
+    background:
+      repeating-linear-gradient(180deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px),
+      radial-gradient(ellipse at 50% -10%, #142019 0%, var(--bg) 60%);
+    color:var(--ink);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow-x:hidden;
+  }
+  .pixel-font{ font-family: ui-monospace, Menlo, Consolas, monospace; letter-spacing:2px; text-transform:uppercase; }
+  #app{ width:100%; max-width:480px; min-height:100vh; display:flex; flex-direction:column; position:relative; }
+
+  header.top{ padding:18px 16px 10px; text-align:center; position:relative; }
+  header.top h1{ font-size:20px; margin:0; color:var(--green); text-shadow: 0 0 6px rgba(61,255,154,0.6), 0 0 18px rgba(61,255,154,0.25); }
+  header.top .sub{ color:var(--ink-dim); font-size:10px; margin-top:6px; letter-spacing:1.5px; }
+  canvas#logo{ image-rendering:pixelated; display:block; margin:0 auto 6px; }
+
+  nav.tabs{ display:flex; border-top:1px solid #1e2a30; border-bottom:1px solid #1e2a30; background:var(--bg2); }
+  nav.tabs button{ flex:1; background:transparent; border:none; color:var(--ink-dim); padding:12px 4px; font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; font-family:inherit; cursor:pointer; border-bottom:2px solid transparent; }
+  nav.tabs button.active{ color:var(--green); border-bottom:2px solid var(--green); text-shadow:0 0 6px rgba(61,255,154,0.5); }
+
+  main{ flex:1; padding:16px; padding-bottom:40px; }
+  .screen{ display:none; animation:fadein .25s ease; }
+  .screen.active{ display:block; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+
+  .score-bar{ display:flex; justify-content:space-between; align-items:center; background:var(--panel); border:1px solid #1e2a30; border-radius:2px; padding:12px 14px; margin-bottom:16px; }
+  .score-bar .label{ font-size:9px; color:var(--ink-dim); letter-spacing:1.5px;}
+  .score-bar .value{ font-size:20px; color:var(--amber); text-shadow:0 0 8px rgba(255,194,60,0.5);}
+
+  .photo-zone{ position:relative; aspect-ratio:1/1; background:#000; border:2px solid var(--green-dim); border-radius:4px; overflow:hidden; margin-bottom:14px; display:flex; align-items:center; justify-content:center; }
+  .photo-zone .placeholder{ color:var(--ink-dim); font-size:11px; text-align:center; padding:20px; letter-spacing:1px; }
+
+  .photo-wrap{ position:relative; margin-bottom:14px; line-height:0; display:none; }
+  .photo-wrap img{ width:100%; display:block; border-radius:4px; border:2px solid var(--green-dim); }
+  .crop-box{ display:none; position:absolute; border:2px solid var(--green); background:rgba(61,255,154,0.1); box-shadow:0 0 12px rgba(61,255,154,0.35) inset; touch-action:none; cursor:grab; }
+
+  button.btn{ display:block; width:100%; background:var(--green); color:#052015; border:none; font-family:inherit; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:14px; border-radius:2px; cursor:pointer; font-weight:bold; transition:box-shadow .15s ease, transform .1s ease; }
+  button.btn:active{ transform:scale(0.98); }
+  button.btn.secondary{ background:transparent; color:var(--green); border:1px solid var(--green-dim); }
+  button.btn.danger{ background:transparent; color:var(--pink); border:1px solid #6b1f3f; }
+  button.btn.small{ padding:9px; font-size:10px; }
+
+  .card{ background:var(--panel); border:1px solid #1e2a30; border-radius:3px; padding:14px; margin-bottom:12px; }
+  .card .row{ display:flex; justify-content:space-between; align-items:center; gap:10px;}
+  .card h3{ margin:0 0 4px; font-size:13px; color:var(--ink); letter-spacing:1px; text-transform:uppercase;}
+  .card .pts{ color:var(--amber); font-size:12px; white-space:nowrap; }
+  .card .hint{ color:var(--ink-dim); font-size:11px; margin-top:6px; line-height:1.5; }
+  .card img.thumb{ width:100%; border-radius:2px; margin-top:8px; display:block; }
+  .badge{ display:inline-block; font-size:9px; letter-spacing:1px; padding:2px 6px; border-radius:2px; margin-top:6px; }
+  .badge.found{ background:rgba(61,255,154,0.12); color:var(--green); border:1px solid var(--green-dim); }
+  .badge.hidden{ background:rgba(255,63,142,0.1); color:var(--pink); border:1px solid #6b1f3f; }
+
+  .empty{ text-align:center; color:var(--ink-dim); font-size:11px; padding:40px 20px; letter-spacing:1px; line-height:1.7;}
+
+  input[type=text], input[type=number], input[type=password], textarea{ width:100%; background:#0c1116; border:1px solid #1e2a30; color:var(--ink); font-family:inherit; font-size:13px; padding:10px; border-radius:2px; margin-bottom:10px; }
+  label.field-label{ font-size:9px; color:var(--ink-dim); letter-spacing:1.5px; display:block; margin-bottom:4px; text-transform:uppercase;}
+  textarea{ resize:vertical; min-height:50px; }
+
+  .toast{ position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--panel); border:1px solid var(--green); color:var(--green); padding:10px 18px; border-radius:3px; font-size:11px; letter-spacing:1px; z-index:999; box-shadow:0 0 20px rgba(61,255,154,0.25); animation: toastin .2s ease; max-width:85%; text-align:center; }
+  @keyframes toastin{ from{opacity:0; transform:translate(-50%,10px);} to{opacity:1; transform:translate(-50%,0);} }
+
+  .capture-overlay{ position:fixed; inset:0; background:rgba(5,8,10,0.94); z-index:1000; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:30px; }
+  .capture-overlay canvas{ image-rendering:pixelated; margin-bottom:18px; }
+  .capture-overlay h2{ color:var(--green); text-shadow:0 0 12px rgba(61,255,154,0.6); font-size:18px; letter-spacing:2px; margin:0 0 6px;}
+  .capture-overlay .pts{ color:var(--amber); font-size:26px; margin-bottom:20px; text-shadow:0 0 10px rgba(255,194,60,0.5);}
+  .capture-overlay p{ color:var(--ink-dim); font-size:11px; margin:0 0 20px; max-width:280px; line-height:1.6;}
+
+  .lock-screen{ text-align:center; padding:60px 10px; }
+  .lock-screen .icon{ font-size:34px; margin-bottom:16px; }
+  .lock-screen p{ color:var(--ink-dim); font-size:11px; margin-bottom:18px; line-height:1.6; }
+
+  .footer-note{ text-align:center; color:var(--ink-dim); font-size:9px; letter-spacing:1px; margin-top:20px; line-height:1.8; opacity:0.7;}
+
+  .crop-controls{ display:none; margin-top:12px; }
+  .crop-controls .row2{ display:flex; gap:8px; margin-bottom:12px; align-items:center; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div id="confirmOverlay" class="capture-overlay" style="display:none; z-index:1001;">
+    <p id="confirmMessage" style="color:var(--ink); font-size:13px; max-width:280px; margin-bottom:24px; line-height:1.6;"></p>
+    <div style="display:flex; gap:10px; width:100%; max-width:280px;">
+      <button class="btn secondary" id="confirmCancel" style="flex:1;">Annuler</button>
+      <button class="btn danger" id="confirmOk" style="flex:1;">Confirmer</button>
+    </div>
+  </div>
+
+  <header class="top">
+    <canvas id="logo" width="66" height="48"></canvas>
+    <h1 class="pixel-font">Invade_Home</h1>
+    <div class="sub pixel-font">chasse aux invaders faits main</div>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="chasse" class="active">Chasse</button>
+    <button data-tab="collection">Collection</button>
+    <button data-tab="admin">Admin</button>
+  </nav>
+
+  <main>
+
+    <!-- CHASSE -->
+    <section class="screen active" id="screen-chasse">
+      <div class="score-bar">
+        <div><div class="label pixel-font">Score total</div><div class="value" id="scoreVal">0 PA</div></div>
+        <div style="text-align:right"><div class="label pixel-font">Trouvés</div><div class="value" id="foundCount" style="color:var(--green)">0/0</div></div>
+      </div>
+
+      <div class="photo-zone" id="cPlaceholder">
+        <div class="placeholder pixel-font">Aucune photo<br>pour l'instant</div>
+      </div>
+      <div class="photo-wrap" id="cWrap">
+        <img id="cImg">
+        <div class="crop-box" id="cCropBox"></div>
+      </div>
+      <input type="file" accept="image/*" capture="environment" id="cInput" style="display:none">
+      <button class="btn" id="cTakeBtn">Prendre une photo</button>
+      <div class="crop-controls" id="cCropControls">
+        <div class="row2">
+          <button type="button" class="btn secondary small" id="cMinus" style="width:46px; flex:none;">−</button>
+          <div class="footer-note pixel-font" style="margin:0; flex:1;">Cadre l'invader trouvé</div>
+          <button type="button" class="btn secondary small" id="cPlus" style="width:46px; flex:none;">+</button>
+        </div>
+        <button class="btn" id="cValidateBtn">Valider ce cadrage</button>
+      </div>
+      <button class="btn secondary" id="cRetakeBtn" style="display:none; margin-top:10px;">Reprendre une photo</button>
+
+      <p class="footer-note">Prends une photo de la création repérée, cadre-la d'assez près (pas besoin d'être pile au même angle qu'à la création), puis valide.</p>
+
+      <div class="card" style="margin-top:18px;">
+        <h3 class="pixel-font" style="font-size:11px; color:var(--green);">Partage manuel</h3>
+        <div class="footer-note" style="text-align:left; margin-top:4px;">
+          Reçu un catalogue ? Colle-le ci-dessous. Tu peux aussi renvoyer ton avancée pour qu'elle l'importe de son côté — rien n'est perdu à chaque échange, ta progression est conservée.
+        </div>
+        <button class="btn secondary small" id="btnShowImportChasse" type="button" style="margin-top:10px;">Coller un catalogue reçu</button>
+        <div id="importWrapChasse" style="display:none; margin-top:10px;">
+          <textarea id="importInChasse" placeholder="Colle ici le code reçu" style="min-height:90px; font-size:10px;"></textarea>
+          <button class="btn" id="btnImportChasse" type="button">Importer ce catalogue</button>
+        </div>
+        <button class="btn secondary small" id="btnExportChasse" style="margin-top:10px;">Générer mon code d'avancée</button>
+        <textarea id="exportOutChasse" readonly style="display:none; margin-top:10px; font-size:10px; min-height:90px;"></textarea>
+      </div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section class="screen" id="screen-collection">
+      <div class="score-bar">
+        <div><div class="label pixel-font">Score total</div><div class="value" id="scoreVal2">0 PA</div></div>
+        <div style="text-align:right"><div class="label pixel-font">Trouvés</div><div class="value" id="foundCount2" style="color:var(--green)">0/0</div></div>
+      </div>
+      <div id="collectionList"></div>
+    </section>
+
+    <!-- ADMIN -->
+    <section class="screen" id="screen-admin">
+      <div id="adminLocked" class="lock-screen">
+        <div class="icon">🔒</div>
+        <p class="pixel-font">Zone créatrice<br>accès protégé par code</p>
+        <input type="password" id="adminPassInput" placeholder="Code secret" inputmode="numeric">
+        <button class="btn" id="btnUnlock">Déverrouiller</button>
+      </div>
+
+      <div id="adminContent" style="display:none">
+        <div class="card">
+          <label class="field-label">Nom de l'invader</label>
+          <input type="text" id="fName" placeholder="ex: Invader du salon">
+          <label class="field-label">Points (difficulté)</label>
+          <input type="number" id="fPoints" placeholder="ex: 30" value="30">
+          <label class="field-label">Indice (optionnel, affiché après découverte)</label>
+          <textarea id="fHint" placeholder="ex: Peint sur le dos d'un vieux livre de cuisine"></textarea>
+
+          <label class="field-label">Photo de la création</label>
+          <div class="footer-note" style="text-align:left; margin-top:0;">Prends une photo nette et bien cadrée de ton dessin/peinture — c'est elle qui servira de référence pour la reconnaissance.</div>
+
+          <div class="photo-zone" id="aPlaceholder" style="margin-top:10px;">
+            <div class="placeholder pixel-font">Aucune photo<br>pour l'instant</div>
+          </div>
+          <div class="photo-wrap" id="aWrap">
+            <img id="aImg">
+            <div class="crop-box" id="aCropBox"></div>
+          </div>
+          <input type="file" accept="image/*" capture="environment" id="aInput" style="display:none">
+          <button class="btn secondary" id="aTakeBtn" type="button">Prendre / choisir une photo</button>
+          <div class="crop-controls" id="aCropControls">
+            <div class="row2">
+              <button type="button" class="btn secondary small" id="aMinus" style="width:46px; flex:none;">−</button>
+              <div class="footer-note pixel-font" style="margin:0; flex:1;">Ajuste le cadre sur le dessin</div>
+              <button type="button" class="btn secondary small" id="aPlus" style="width:46px; flex:none;">+</button>
+            </div>
+          </div>
+          <button class="btn secondary" id="aRetakeBtn" type="button" style="display:none; margin-top:10px;">Reprendre / changer de photo</button>
+
+          <button class="btn" id="btnCreate" style="margin-top:16px;">Créer l'invader</button>
+        </div>
+
+        <h3 class="pixel-font" style="font-size:11px; color:var(--ink-dim); margin:22px 0 10px;">Tous les invaders créés</h3>
+        <div id="adminList"></div>
+
+        <button class="btn danger small" id="btnReset" style="margin-top:20px;">Tout réinitialiser</button>
+
+        <div class="card" style="margin-top:24px;">
+          <h3 class="pixel-font" style="font-size:11px; color:var(--green);">Partage manuel</h3>
+          <div class="footer-note" style="text-align:left; margin-top:4px;">
+            Si la sauvegarde automatique ne fonctionne pas, copie ce code et envoie-le à ton copain — il le colle dans son app (onglet Chasse) pour récupérer le catalogue.
+          </div>
+          <button class="btn secondary small" id="btnExport" style="margin-top:10px;">Générer le code à copier</button>
+          <textarea id="exportOut" readonly style="display:none; margin-top:10px; font-size:10px; min-height:90px;"></textarea>
+
+          <div class="footer-note" style="text-align:left; margin-top:14px;">
+            Il t'a renvoyé son code d'avancée ? Colle-le ici pour voir ce qu'il a trouvé dans ta Collection.
+          </div>
+          <button class="btn secondary small" id="btnShowImportAdmin" type="button" style="margin-top:10px;">Coller son avancée</button>
+          <div id="importWrapAdmin" style="display:none; margin-top:10px;">
+            <textarea id="importInAdmin" placeholder="Colle ici le code reçu" style="min-height:90px; font-size:10px;"></textarea>
+            <button class="btn" id="btnImportAdmin" type="button">Importer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const STORAGE_KEY = 'invadehome-data-v4';
+const MATCH_THRESHOLD = 0.55; // similarité 0..1 — plus haut = plus strict
+
+let DATA = { invaders: [], passcode: null };
+
+// ---------- Pixel invader logo ----------
+const INVADER_MATRIX = [
+  [0,0,1,0,0,0,0,0,1,0,0],
+  [0,0,0,1,0,0,0,1,0,0,0],
+  [0,0,1,1,1,1,1,1,1,0,0],
+  [0,1,1,0,1,1,1,0,1,1,0],
+  [1,1,1,1,1,1,1,1,1,1,1],
+  [1,0,1,1,1,1,1,1,1,0,1],
+  [1,0,1,0,0,0,0,0,1,0,1],
+  [0,0,0,1,1,0,1,1,0,0,0]
+];
+function drawInvader(canvas, color){
+  const ctx = canvas.getContext('2d');
+  const px = canvas.width / INVADER_MATRIX[0].length;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = color || '#3dff9a';
+  INVADER_MATRIX.forEach((row,y)=>{ row.forEach((cell,x)=>{ if(cell) ctx.fillRect(x*px, y*px, px, px); }); });
+}
+drawInvader(document.getElementById('logo'));
+
+// ---------- storage ----------
+async function loadData(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){ DATA = JSON.parse(raw); }
+  }catch(e){ console.error('load failed', e); }
+  render();
+}
+async function saveData(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA));
+    return true;
+  }catch(e){
+    console.error('save failed', e);
+    showToast('⚠ Sauvegarde impossible sur cet appareil (mémoire pleine ou navigation privée ?)');
+    return false;
+  }
+}
+async function sha256(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function uid(){ return 'INV-' + Math.random().toString(36).slice(2,8).toUpperCase(); }
+function escapeHtml(s){ const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+
+// ---------- tabs ----------
+document.querySelectorAll('nav.tabs button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('screen-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+function showToast(msg){
+  const t = document.createElement('div');
+  t.className = 'toast pixel-font';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(), 2600);
+}
+
+function customConfirm(message){
+  return new Promise(resolve=>{
+    const overlay = document.getElementById('confirmOverlay');
+    document.getElementById('confirmMessage').textContent = message;
+    overlay.style.display = 'flex';
+    const okBtn = document.getElementById('confirmOk');
+    const cancelBtn = document.getElementById('confirmCancel');
+    const cleanup = (result)=>{
+      overlay.style.display = 'none';
+      okBtn.removeEventListener('click', onOk);
+      cancelBtn.removeEventListener('click', onCancel);
+      resolve(result);
+    };
+    const onOk = ()=>cleanup(true);
+    const onCancel = ()=>cleanup(false);
+    okBtn.addEventListener('click', onOk);
+    cancelBtn.addEventListener('click', onCancel);
+  });
+}
+
+// ---------- signature couleur : robuste à l'angle, la rotation et l'éclairage ----------
+function rgbToHsv(r,g,b){
+  r/=255; g/=255; b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min;
+  let h=0;
+  if(d!==0){
+    if(max===r) h = ((g-b)/d) % 6;
+    else if(max===g) h = (b-r)/d + 2;
+    else h = (r-g)/d + 4;
+    h *= 60;
+    if(h<0) h += 360;
+  }
+  const s = max===0 ? 0 : d/max;
+  return {h, s, v:max};
+}
+const HUE_BUCKETS = 16; // teintes plus fines (22.5° au lieu de 30°)
+const VALUE_TIERS = 3;  // sombre / moyen / clair, avec transition douce
+const CHROMA_BUCKETS = HUE_BUCKETS * VALUE_TIERS;
+const HIST_BUCKETS = CHROMA_BUCKETS + 3; // + noir + blanc + gris
+function tierWeights(v){
+  const centers = [0.32, 0.6, 0.88];
+  let w = centers.map(c => Math.max(0, 1 - Math.abs(v-c)/0.36));
+  const sum = w.reduce((a,b)=>a+b,0) || 1;
+  return w.map(x=>x/sum);
+}
+function addColorToHist(hist, r,g,b){
+  const {h,s,v} = rgbToHsv(r,g,b);
+  if(v < 0.18){ hist[CHROMA_BUCKETS] += 1; return; }
+  if(v > 0.9 && s < 0.15){ hist[CHROMA_BUCKETS+1] += 1; return; }
+  if(s < 0.18){ hist[CHROMA_BUCKETS+2] += 1; return; }
+  const hueWidth = 360/HUE_BUCKETS;
+  const pos = h/hueWidth;
+  const b0 = Math.floor(pos) % HUE_BUCKETS;
+  const b1 = (b0+1) % HUE_BUCKETS;
+  const frac = pos - Math.floor(pos);
+  const valueWeights = tierWeights(v);
+  [[b0, 1-frac], [b1, frac]].forEach(([hueBucket, hw])=>{
+    for(let t=0;t<VALUE_TIERS;t++){
+      hist[hueBucket*VALUE_TIERS + t] += hw * valueWeights[t];
+    }
+  });
+}
+function computeSignature(canvas){
+  const size = 60;
+  const tmp = document.createElement('canvas');
+  tmp.width = size; tmp.height = size;
+  tmp.getContext('2d').drawImage(canvas, 0, 0, size, size);
+  const data = tmp.getContext('2d').getImageData(0,0,size,size).data;
+
+  const hist = new Array(HIST_BUCKETS).fill(0);
+  for(let i=0;i<size*size;i++){
+    addColorToHist(hist, data[i*4], data[i*4+1], data[i*4+2]);
+  }
+  for(let i=0;i<HIST_BUCKETS;i++) hist[i] /= (size*size);
+
+  const layout = [];
+  const cell = size/3;
+  for(let gy=0; gy<3; gy++){
+    for(let gx=0; gx<3; gx++){
+      let rs=0,gs=0,bs=0,c=0;
+      for(let y=Math.floor(gy*cell); y<Math.floor((gy+1)*cell); y++){
+        for(let x=Math.floor(gx*cell); x<Math.floor((gx+1)*cell); x++){
+          const idx=(y*size+x)*4;
+          rs+=data[idx]; gs+=data[idx+1]; bs+=data[idx+2]; c++;
+        }
+      }
+      layout.push({r:rs/c, g:gs/c, b:bs/c});
+    }
+  }
+  return { hist, layout };
+}
+function histSimilarity(a,b){
+  let s=0;
+  for(let i=0;i<a.length;i++) s += Math.min(a[i], b[i]);
+  return s;
+}
+const ROT90_MAP = [6,3,0,7,4,1,8,5,2];
+function rotateLayout90(l){ return ROT90_MAP.map(i=>l[i]); }
+function mirrorLayout(l){ return [l[2],l[1],l[0],l[5],l[4],l[3],l[8],l[7],l[6]]; }
+function layoutDistance(a,b){
+  let d=0;
+  for(let i=0;i<9;i++) d += Math.sqrt((a[i].r-b[i].r)**2 + (a[i].g-b[i].g)**2 + (a[i].b-b[i].b)**2);
+  return d/9;
+}
+function bestLayoutSimilarity(l1, l2){
+  let minDist = Infinity;
+  [l2, mirrorLayout(l2)].forEach(base=>{
+    let cur = base;
+    for(let r=0;r<4;r++){
+      const d = layoutDistance(l1, cur);
+      if(d<minDist) minDist = d;
+      cur = rotateLayout90(cur);
+    }
+  });
+  return Math.max(0, 1 - minDist/220);
+}
+function signatureSimilarity(a,b){
+  return 0.7*histSimilarity(a.hist, b.hist) + 0.3*bestLayoutSimilarity(a.layout, b.layout);
+}
+
+// ---------- widget photo + cadrage réutilisable ----------
+function makePhotoWidget(el){
+  let workingCanvas = null;
+  let cropSize = 0;
+  let dragging = false, dragStart = {x:0,y:0}, boxStart = {left:0,top:0};
+
+  el.takeBtn.addEventListener('click', ()=>el.input.click());
+  el.retakeBtn.addEventListener('click', reset);
+  el.input.addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if(file) load(file);
+  });
+
+  function load(file){
+    const reader = new FileReader();
+    reader.onerror = ()=>{ showToast('Impossible de lire la photo, réessaie'); reset(); };
+    reader.onload = (ev)=>{
+      const img = new Image();
+      img.onerror = ()=>{ showToast('Photo illisible, réessaie'); reset(); };
+      img.onload = ()=>{
+        try{
+          const maxDim = 1400;
+          const scale = Math.min(1, maxDim/Math.max(img.width, img.height));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.width*scale);
+          canvas.height = Math.round(img.height*scale);
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          workingCanvas = canvas;
+          el.img.src = canvas.toDataURL('image/jpeg', 0.85);
+        }catch(err){
+          console.error('photo processing failed', err);
+          showToast('Erreur lors du traitement de la photo');
+          reset();
+        }
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  el.img.addEventListener('load', ()=>{
+    el.placeholder.style.display = 'none';
+    el.wrap.style.display = 'block';
+    el.takeBtn.style.display = 'none';
+    el.retakeBtn.style.display = 'block';
+    el.cropControls.style.display = 'block';
+    el.cropBox.style.display = 'block';
+    const w = el.img.clientWidth, h = el.img.clientHeight;
+    const size = Math.round(Math.min(w,h) * 0.7);
+    cropSize = size;
+    el.cropBox.style.width = size+'px';
+    el.cropBox.style.height = size+'px';
+    el.cropBox.style.left = Math.round((w-size)/2)+'px';
+    el.cropBox.style.top = Math.round((h-size)/2)+'px';
+  });
+
+  function reset(){
+    el.wrap.style.display = 'none';
+    el.placeholder.style.display = 'flex';
+    el.takeBtn.style.display = 'block';
+    el.retakeBtn.style.display = 'none';
+    el.cropControls.style.display = 'none';
+    el.cropBox.style.display = 'none';
+    el.input.value = '';
+    workingCanvas = null;
+  }
+
+  el.cropBox.addEventListener('pointerdown', (e)=>{
+    dragging = true;
+    dragStart = {x:e.clientX, y:e.clientY};
+    boxStart = {left:parseFloat(el.cropBox.style.left), top:parseFloat(el.cropBox.style.top)};
+    el.cropBox.setPointerCapture(e.pointerId);
+  });
+  el.cropBox.addEventListener('pointermove', (e)=>{
+    if(!dragging) return;
+    const dx = e.clientX-dragStart.x, dy = e.clientY-dragStart.y;
+    const w = el.img.clientWidth, h = el.img.clientHeight;
+    let left = boxStart.left+dx, top = boxStart.top+dy;
+    left = Math.max(0, Math.min(left, w-cropSize));
+    top = Math.max(0, Math.min(top, h-cropSize));
+    el.cropBox.style.left = left+'px';
+    el.cropBox.style.top = top+'px';
+  });
+  el.cropBox.addEventListener('pointerup', ()=>{ dragging=false; });
+  el.cropBox.addEventListener('pointercancel', ()=>{ dragging=false; });
+
+  el.minusBtn.addEventListener('click', ()=>resize(-0.06));
+  el.plusBtn.addEventListener('click', ()=>resize(0.06));
+  function resize(deltaFraction){
+    const w = el.img.clientWidth, h = el.img.clientHeight;
+    const maxSize = Math.min(w,h);
+    const left = parseFloat(el.cropBox.style.left), top = parseFloat(el.cropBox.style.top);
+    const cx = left+cropSize/2, cy = top+cropSize/2;
+    let newSize = cropSize + maxSize*deltaFraction;
+    newSize = Math.max(maxSize*0.25, Math.min(maxSize*0.98, newSize));
+    cropSize = newSize;
+    let newLeft = cx-newSize/2, newTop = cy-newSize/2;
+    newLeft = Math.max(0, Math.min(newLeft, w-newSize));
+    newTop = Math.max(0, Math.min(newTop, h-newSize));
+    el.cropBox.style.width = newSize+'px';
+    el.cropBox.style.height = newSize+'px';
+    el.cropBox.style.left = newLeft+'px';
+    el.cropBox.style.top = newTop+'px';
+  }
+
+  function getCroppedCanvas(outSize){
+    if(!workingCanvas) return null;
+    const w = el.img.clientWidth, h = el.img.clientHeight;
+    if(!w || !h) return null;
+    const scaleX = workingCanvas.width / w;
+    const scaleY = workingCanvas.height / h;
+    const left = parseFloat(el.cropBox.style.left), top = parseFloat(el.cropBox.style.top);
+    let nx = Math.round(left*scaleX), ny = Math.round(top*scaleY);
+    let nsize = Math.round(cropSize*scaleX);
+    nx = Math.max(0, Math.min(nx, workingCanvas.width-2));
+    ny = Math.max(0, Math.min(ny, workingCanvas.height-2));
+    nsize = Math.max(2, Math.min(nsize, workingCanvas.width-nx, workingCanvas.height-ny));
+    let imageData;
+    try{ imageData = workingCanvas.getContext('2d').getImageData(nx, ny, nsize, nsize); }
+    catch(err){ console.error('crop failed', err); return null; }
+    const out = document.createElement('canvas');
+    out.width = outSize; out.height = outSize;
+    const tmp = document.createElement('canvas');
+    tmp.width = nsize; tmp.height = nsize;
+    tmp.getContext('2d').putImageData(imageData, 0, 0);
+    out.getContext('2d').drawImage(tmp, 0, 0, outSize, outSize);
+    return out;
+  }
+
+  return { getCroppedCanvas, reset, hasPhoto: ()=>!!workingCanvas };
+}
+
+const adminWidget = makePhotoWidget({
+  input: document.getElementById('aInput'),
+  takeBtn: document.getElementById('aTakeBtn'),
+  retakeBtn: document.getElementById('aRetakeBtn'),
+  placeholder: document.getElementById('aPlaceholder'),
+  wrap: document.getElementById('aWrap'),
+  img: document.getElementById('aImg'),
+  cropBox: document.getElementById('aCropBox'),
+  cropControls: document.getElementById('aCropControls'),
+  minusBtn: document.getElementById('aMinus'),
+  plusBtn: document.getElementById('aPlus')
+});
+
+const chasseWidget = makePhotoWidget({
+  input: document.getElementById('cInput'),
+  takeBtn: document.getElementById('cTakeBtn'),
+  retakeBtn: document.getElementById('cRetakeBtn'),
+  placeholder: document.getElementById('cPlaceholder'),
+  wrap: document.getElementById('cWrap'),
+  img: document.getElementById('cImg'),
+  cropBox: document.getElementById('cCropBox'),
+  cropControls: document.getElementById('cCropControls'),
+  minusBtn: document.getElementById('cMinus'),
+  plusBtn: document.getElementById('cPlus')
+});
+
+// ---------- render ----------
+function render(){
+  const total = DATA.invaders.length;
+  const found = DATA.invaders.filter(i=>i.found);
+  const score = found.reduce((s,i)=>s+Number(i.points||0),0);
+
+  document.getElementById('scoreVal').textContent = score + ' PA';
+  document.getElementById('scoreVal2').textContent = score + ' PA';
+  document.getElementById('foundCount').textContent = found.length + '/' + total;
+  document.getElementById('foundCount2').textContent = found.length + '/' + total;
+
+  const collEl = document.getElementById('collectionList');
+  if(total === 0){
+    collEl.innerHTML = '<div class="empty pixel-font">Aucun invader créé pour<br>le moment. Reviens plus tard !</div>';
+  } else {
+    collEl.innerHTML = DATA.invaders.map(inv=>{
+      if(inv.found){
+        return `<div class="card">
+          <div class="row"><h3>${escapeHtml(inv.name)}</h3><span class="pts">${inv.points} PA</span></div>
+          ${inv.thumb ? `<img class="thumb" src="${inv.thumb}">` : ''}
+          ${inv.hint ? `<div class="hint">${escapeHtml(inv.hint)}</div>` : ''}
+          <span class="badge found pixel-font">Trouvé</span>
+        </div>`;
+      } else {
+        return `<div class="card">
+          <div class="row"><h3 style="color:var(--ink-dim)">???</h3><span class="pts" style="opacity:0.4">${inv.points} PA</span></div>
+          <span class="badge hidden pixel-font">Pas encore trouvé</span>
+        </div>`;
+      }
+    }).join('');
+  }
+
+  const adminEl = document.getElementById('adminList');
+  if(total === 0){
+    adminEl.innerHTML = '<div class="empty pixel-font">Aucune création pour l\'instant</div>';
+  } else {
+    adminEl.innerHTML = DATA.invaders.map(inv=>{
+      return `<div class="card">
+        <div class="row"><h3>${escapeHtml(inv.name)}</h3><span class="pts">${inv.points} PA</span></div>
+        ${inv.thumb ? `<img class="thumb" src="${inv.thumb}">` : ''}
+        <span class="badge ${inv.found?'found':'hidden'} pixel-font">${inv.found ? 'Trouvé par ton copain 🎉' : 'En attente'}</span>
+        <div class="row" style="margin-top:10px; gap:8px;">
+          <button class="btn danger small" style="flex:1" onclick="deleteInvader('${inv.id}')">Supprimer</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+}
+
+// ---------- admin: passcode ----------
+document.getElementById('btnUnlock').addEventListener('click', async ()=>{
+  const val = document.getElementById('adminPassInput').value.trim();
+  if(!val){ showToast('Entre un code'); return; }
+  if(!DATA.passcode){
+    DATA.passcode = await sha256(val);
+    await saveData();
+    showToast('Code créé, zone déverrouillée');
+    enterAdmin();
+  } else {
+    const h = await sha256(val);
+    if(h === DATA.passcode){ enterAdmin(); }
+    else { showToast('Code incorrect'); }
+  }
+});
+function enterAdmin(){
+  document.getElementById('adminLocked').style.display = 'none';
+  document.getElementById('adminContent').style.display = 'block';
+}
+
+// ---------- create invader ----------
+document.getElementById('btnCreate').addEventListener('click', async ()=>{
+  const name = document.getElementById('fName').value.trim();
+  const points = parseInt(document.getElementById('fPoints').value) || 10;
+  const hint = document.getElementById('fHint').value.trim();
+  if(!name){ showToast('Donne un nom à ton invader'); return; }
+  if(!adminWidget.hasPhoto()){ showToast('Ajoute une photo de la création'); return; }
+
+  const cropped = adminWidget.getCroppedCanvas(240);
+  if(!cropped){ showToast('Erreur avec la photo, réessaie le cadrage'); return; }
+  const signature = computeSignature(cropped);
+  const thumb = cropped.toDataURL('image/jpeg', 0.8);
+
+  const inv = { id: uid(), name, points, hint, thumb, signature, found: false, createdAt: Date.now() };
+  DATA.invaders.push(inv);
+  await saveData();
+  render();
+  showToast('Invader créé !');
+
+  document.getElementById('fName').value='';
+  document.getElementById('fHint').value='';
+  adminWidget.reset();
+});
+
+window.deleteInvader = async function(id){
+  const ok = await customConfirm('Supprimer cet invader définitivement ?');
+  if(!ok) return;
+  DATA.invaders = DATA.invaders.filter(i=>i.id!==id);
+  await saveData();
+  render();
+};
+
+document.getElementById('btnReset').addEventListener('click', async ()=>{
+  const ok = await customConfirm('Tout supprimer (invaders + score) ? Irréversible.');
+  if(!ok) return;
+  DATA.invaders = [];
+  await saveData();
+  render();
+});
+
+// ---------- scan (chasse) ----------
+document.getElementById('cValidateBtn').addEventListener('click', ()=>{
+  const cropped = chasseWidget.getCroppedCanvas(240);
+  if(!cropped){ showToast('Erreur de cadrage, réessaie'); return; }
+  const signature = computeSignature(cropped);
+
+  let best = null, bestScore = -1;
+  DATA.invaders.forEach(inv=>{
+    if(inv.found || !inv.signature) return;
+    const score = signatureSimilarity(signature, inv.signature);
+    if(score > bestScore){ bestScore = score; best = inv; }
+  });
+
+  if(best && bestScore >= MATCH_THRESHOLD){
+    finalizeCapture(best);
+    chasseWidget.reset();
+  } else {
+    showToast('Pas de correspondance, ajuste le cadrage et réessaie');
+  }
+});
+
+// ---------- shared capture success ----------
+async function finalizeCapture(inv){
+  inv.found = true;
+  inv.foundAt = Date.now();
+  await saveData();
+  render();
+  showCaptureOverlay(inv);
+}
+function showCaptureOverlay(inv){
+  const overlay = document.createElement('div');
+  overlay.className = 'capture-overlay';
+  overlay.innerHTML = `
+    <canvas id="capCanvas" width="88" height="64"></canvas>
+    <h2 class="pixel-font">Invader capturé !</h2>
+    <div class="pts pixel-font">+${inv.points} PA</div>
+    <p>${escapeHtml(inv.name)}${inv.hint ? ' — ' + escapeHtml(inv.hint) : ''}</p>
+    <button class="btn" id="btnCloseCapture" style="max-width:200px;">Continuer la chasse</button>
+  `;
+  document.body.appendChild(overlay);
+  drawInvader(document.getElementById('capCanvas'), '#3dff9a');
+  document.getElementById('btnCloseCapture').addEventListener('click', ()=>overlay.remove());
+}
+
+// ---------- export / import manuel (fusion sans perte de progression) ----------
+function mergeInvaders(existing, incoming){
+  const byId = new Map(existing.map(i=>[i.id, i]));
+  return incoming.map(inc=>{
+    const local = byId.get(inc.id);
+    if(local && local.found){
+      return { ...inc, found: true, foundAt: local.foundAt };
+    }
+    return inc;
+  });
+}
+
+function wireExport(btnId, outId){
+  document.getElementById(btnId).addEventListener('click', async ()=>{
+    const code = JSON.stringify(DATA.invaders);
+    const out = document.getElementById(outId);
+    out.value = code;
+    out.style.display = 'block';
+    out.focus();
+    out.select();
+    try{
+      await navigator.clipboard.writeText(code);
+      showToast('Code copié dans le presse-papiers !');
+    }catch(e){
+      showToast('Sélectionne le texte ci-dessous et copie-le manuellement');
+    }
+  });
+}
+
+function wireImport(showBtnId, wrapId, inputId, importBtnId){
+  document.getElementById(showBtnId).addEventListener('click', ()=>{
+    const wrap = document.getElementById(wrapId);
+    wrap.style.display = wrap.style.display === 'none' ? 'block' : 'none';
+  });
+  document.getElementById(importBtnId).addEventListener('click', async ()=>{
+    const inputEl = document.getElementById(inputId);
+    const raw = inputEl.value.trim();
+    if(!raw){ showToast('Colle un code d\'abord'); return; }
+    let parsed;
+    try{ parsed = JSON.parse(raw); }
+    catch(e){ showToast('Code invalide, vérifie le copier-coller'); return; }
+    if(!Array.isArray(parsed)){ showToast('Code invalide (format inattendu)'); return; }
+
+    DATA.invaders = mergeInvaders(DATA.invaders, parsed);
+    await saveData();
+    render();
+    inputEl.value = '';
+    document.getElementById(wrapId).style.display = 'none';
+    showToast('Catalogue importé !');
+  });
+}
+
+wireExport('btnExport', 'exportOut');
+wireExport('btnExportChasse', 'exportOutChasse');
+wireImport('btnShowImportChasse', 'importWrapChasse', 'importInChasse', 'btnImportChasse');
+wireImport('btnShowImportAdmin', 'importWrapAdmin', 'importInAdmin', 'btnImportAdmin');
+
+// ---------- filet de sécurité ----------
+window.addEventListener('error', (e)=>{
+  console.error('Erreur non interceptée', e.error || e.message);
+  showToast('Un souci est survenu, réessaie l\'action');
+});
+
+// ---------- init ----------
+loadData();
+</script>
+</body>
+</html>
